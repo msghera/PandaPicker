@@ -1,0 +1,18 @@
+/* style.css */
+
+/* Define a fixed width for the slider */
+#ratingSlider {
+  width: 300px;
+}
+
+#ratingContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Style for the currentRating span */
+#currentRating {
+  min-width: 30px; /* Adjust the minimum width as needed */
+  text-align: center; /* Center the text */
+}
