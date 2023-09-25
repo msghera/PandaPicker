@@ -1,5 +1,6 @@
 console.log("Starting...");
 
+MINIMUM_VALUE = 4.0;
 
 function getRatingFromString(ratingString) {
     if (!ratingString.includes('/5')) {
@@ -25,9 +26,7 @@ function removeLowRatingCard(minimumRating, card) {
     return false;
 }
 
-function refresh(minimumRating = undefined) {
-
-    minimumRating = minimumRating === undefined ? 0 : minimumRating;
+function refresh(minimumRating = MINIMUM_VALUE) {
 
     const foodCards = document.querySelectorAll('.vendor-tile-wrapper');
 
@@ -45,7 +44,18 @@ function refresh(minimumRating = undefined) {
 }
 
 (() => {
-    refresh()
-    setInterval(() => refresh(), 2000)
+    refresh(MINIMUM_VALUE);
+    
+    setInterval(() => refresh(MINIMUM_VALUE), 2000)
 })()
 
+
+function handleMessageFromScript(message) {
+    if (message.action === 'sliderValueChanged') {
+
+        rating = message.data;
+        console.log('Message received in content.js:', data);
+    }
+}
+
+chrome.runtime.onMessage.addListener(handleMessageFromScript);

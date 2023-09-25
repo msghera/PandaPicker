@@ -1,20 +1,24 @@
 {
-  "manifest_version": 3,
-  "name": "Foodpanda Rating Extension",
-  "version": "1.0.0",
-  "description": "This Extension provides filtering on the page where Foodpanda shows available restaurants based on rating.",
-  "action": {
-    "default_popup": "index.html"
-  },
-  "permissions": [
-    "activeTab"
-  ],
-  "content_scripts": [
-    {
-      "matches": [
-        "https://www.foodpanda.com.bd/*"
-      ],
-      "js": ["script.js"]
+    "manifest_version": 3,
+    "name": "Foodpanda Rating Extension",
+    "version": "1.0.0",
+    "description": "This Extension provides filtering on the page where Foodpanda shows available restaurants based on rating.",
+    "action": {
+        "default_popup": "src/index.html"
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.foodpanda.com.bd/restaurants/*"
+            ],
+            "js": ["src/script.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "background": { 
+        "service_worker": "src/background.js"
     }
-  ]
 }
