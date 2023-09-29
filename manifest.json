@@ -1,13 +1,14 @@
 {
     "manifest_version": 3,
-    "name": "Foodpanda Rating Extension",
-    "version": "1.0.0",
-    "description": "This Extension provides filtering on the page where Foodpanda shows available restaurants based on rating.",
+    "name": "PandaPicker",
+    "version": "0.0.1",
+    "description": "PandaPicker is your trusted companion for navigating Foodpanda, the online food delivery service.Tired of scrolling through countless restaurant options? Let PandaPicker simplify your choices.",
     "action": {
         "default_popup": "src/index.html"
     },
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "storage"
     ],
     "content_scripts": [
         {
@@ -18,7 +19,9 @@
             "run_at": "document_end"
         }
     ],
-    "background": { 
-        "service_worker": "src/background.js"
+    "icons": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
     }
 }

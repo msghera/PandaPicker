@@ -1,6 +1,10 @@
-console.log("Starting...");
+MINIMUM_RATING = 0.0;
+const REREST_INTERVAL_IN_MS = 2000;
 
-MINIMUM_VALUE = 4.0;
+chrome.storage.local.get(['sliderValue'], function(result) {
+    MINIMUM_RATING = result.sliderValue || 0.0;
+});
+
 
 function getRatingFromString(ratingString) {
     if (!ratingString.includes('/5')) {
@@ -11,50 +15,48 @@ function getRatingFromString(ratingString) {
     return theRating;
 }
 
-function removeLowRatingCard(minimumRating, card) {
-    const theRatingStringElement = card.querySelector('.rating--label-primary');
-    if (!theRatingStringElement) {
-        return false;
-    }
-    const ratingString = theRatingStringElement.innerText;
-    const rating = getRatingFromString(ratingString);
+function showCard(card){
+    card.parentElement.style.display = '';
+}
 
-    if (rating < minimumRating) {
-        card.parentElement.remove()
-        return true;
+function hideCard(card){
+    card.parentElement.style.display = 'none';
+}
+
+
+function processCard(minimumRating, card) {
+    
+    const theRatingStringElement = card.querySelector('.rating--label-primary');
+    if (theRatingStringElement) {
+        const ratingString = theRatingStringElement.innerText;
+        const rating = getRatingFromString(ratingString);
+
+        rating < minimumRating ? hideCard(card) : showCard(card);
     }
-    return false;
+    
 }
 
 function refresh(minimumRating = MINIMUM_VALUE) {
 
     const foodCards = document.querySelectorAll('.vendor-tile-wrapper');
 
-    let hiddenCount = 0;
-
     for (const card of [...foodCards]) {
-        const isHidden = removeLowRatingCard(minimumRating, card)
-
-        if (isHidden) {
-            hiddenCount++;
-        }
+        processCard(minimumRating, card);
     }
-
-    console.log(`Filtering options below rating (${minimumRating}/5): removed ${hiddenCount} options`)
 }
 
 (() => {
-    refresh(MINIMUM_VALUE);
+    refresh(MINIMUM_RATING);
     
-    setInterval(() => refresh(MINIMUM_VALUE), 2000)
+    setInterval(() => refresh(MINIMUM_RATING), REREST_INTERVAL_IN_MS)
 })()
 
 
 function handleMessageFromScript(message) {
     if (message.action === 'sliderValueChanged') {
 
-        rating = message.data;
-        console.log('Message received in content.js:', data);
+        MINIMUM_RATING = message.rating;
+        console.log('Minimum rating changed to:', MINIMUM_RATING);
     }
 }
 
