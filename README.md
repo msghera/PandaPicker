@@ -5,7 +5,7 @@
 PandaPicker is your trusted companion for navigating Foodpanda, the online food delivery service. Tired of scrolling through countless restaurant options? Let PandaPicker simplify your choices.
 
 ## Installation (Chrome Web Store)
-This extension is not yet avaialble there, yet!
+This extension is not avaialble there, yet!
 
 
 ## Installation (For developers)
@@ -52,4 +52,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credit
 
-- Special thanks to [Sabbir Siddiqui](https://www.linkedin.com/in/sabbirsiddiqui) for letting me think about this great idea . 
+- Special thanks to [Sabbir Siddiqui](https://www.linkedin.com/in/sabbirsiddiqui) for letting me think about this great idea. 
