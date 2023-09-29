@@ -15,12 +15,12 @@
 
 h1 {
   font-size: 24px;
-  margin: 0 auto; /* Center the text horizontally */
-  text-align: center; /* Center the text within the container */
-  color: rgb(226, 27, 112); /* Set the text color to pink */
-  font-style: italic; /* Add italic style */
-  display: inline-block; /* Ensure that the italic style applies correctly */
-  padding: 5px 10px; /* Add padding for better visibility */
+  margin: 0 auto; 
+  text-align: center; 
+  color: rgb(226, 27, 112);
+  font-style: italic;
+  display: inline-block;
+  padding: 5px 10px;
 }
 
 p {
@@ -34,4 +34,24 @@ label {
   color: #555; 
   margin-bottom: 10px;
   display: block;
+}
+
+label[for="ratingSlider"] {
+  font-weight: bold;
+}
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#motto {
+  font-size: 32px;
+  font-style: italic;
+  color: #666;
+  margin: 0;
 }
